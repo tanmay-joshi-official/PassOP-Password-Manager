@@ -9,7 +9,7 @@ const Manager = () => {
     const [PasswordArray, setPasswordArray] = useState([]);
 
     const getPasswords = async () => {
-        let req = await fetch("http://localhost:3000/")
+        let req = await fetch("https://passop-password-manager-d9n8.onrender.com")
         let passwords = await req.json()
         console.log(passwords)
         setPasswordArray(passwords)
@@ -75,7 +75,7 @@ const Manager = () => {
     const handleDelete = async (index) => {
         const updatedPasswords = PasswordArray.filter((_, i) => i !== index);
         setPasswordArray(updatedPasswords);
-        let res = fetch("http://localhost:3000/", { method: "DELETE", headers: { "Content-Type": "application/json" }, body: JSON.stringify(setPasswordArray) })
+        let res = fetch("https://passop-password-manager-d9n8.onrender.com", { method: "DELETE", headers: { "Content-Type": "application/json" }, body: JSON.stringify(setPasswordArray) })
         // localStorage.setItem("passwords", JSON.stringify(updatedPasswords));
         toast.success("Password deleted!", {
             autoClose: 2000,
@@ -85,7 +85,7 @@ const Manager = () => {
     const deleteAllPasswords = () => {
         if (window.confirm("Do you want to delete all the passwords?")) {
             setPasswordArray([])
-            let res = fetch("http://localhost:3000/all", { method: "DELETE", headers: { "Content-Type": "application/json" }, body: JSON.stringify(setPasswordArray) })
+            let res = fetch("https://passop-password-manager-d9n8.onrender.comall", { method: "DELETE", headers: { "Content-Type": "application/json" }, body: JSON.stringify(setPasswordArray) })
             // localStorage.removeItem("passwords")
             toast.success("All passwords deleted!", {
                 autoClose: 2000,
@@ -97,7 +97,7 @@ const Manager = () => {
         setform(PasswordArray[index]);
         const updatedPasswords = PasswordArray.filter((_, i) => i !== index);
         setPasswordArray(updatedPasswords);
-        let res = fetch("http://localhost:3000/", { method: "DELETE", headers: { "Content-Type": "application/json" }, body: JSON.stringify(setPasswordArray) })
+        let res = fetch("https://passop-password-manager-d9n8.onrender.com", { method: "DELETE", headers: { "Content-Type": "application/json" }, body: JSON.stringify(setPasswordArray) })
     }
 
     return (<>
