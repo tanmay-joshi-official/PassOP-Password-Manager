@@ -49,7 +49,7 @@ const Manager = () => {
             return;
         }
         setPasswordArray([...PasswordArray, form]);
-        let res = await fetch("http://localhost:3000", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(form) })
+        let res = await fetch("https://passop-password-manager-d9n8.onrender.com", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(form) })
 
         // localStorage.setItem("passwords", JSON.stringify([...PasswordArray, form]));
         setform({ site: "", username: "", password: "" });
@@ -205,3 +205,4 @@ const Manager = () => {
 }
 
 export default Manager
+
