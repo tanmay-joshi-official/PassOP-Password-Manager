@@ -177,15 +177,15 @@ const Manager = () => {
                             {PasswordArray.map((item, index) => {
                                 return (
                                     <tr key={index}>
-                                        <td className='py-2 relative md:text-base text-sm'>{<a href={item.site} target='_blank'><div className='flex flex-wrap w-full items-center justify-center'>{item.site}</div>
+                                        <td className='py-2 md:text-base text-sm'>{<a href={item.site} target='_blank'><div className='flex items-center justify-center gap-2 flex-wrap'>{item.site}</div>
                                         </a>}
-                                            <div className='cursor-pointer absolute md:right-2 right-0 top-1/2 transform -translate-y-1/2 hover:bg-slate-400 active:bg-slate-500 rounded-full transition-all' onClick={() => { copyToClipboard(item.site) }}><FaRegCopy /></div>
+                                            <div className='cursor-pointer hover:bg-slate-400 active:bg-slate-500 rounded-full transition-all' onClick={() => { copyToClipboard(item.site) }}><FaRegCopy /></div>
                                         </td>
-                                        <td className='py-2 relative md:text-base text-sm'><div className='flex flex-wrap w-full items-center justify-center'>{item.username}</div>
-                                            <div className='cursor-pointer absolute md:right-2 right-0 top-1/2 transform -translate-y-1/2 hover:bg-slate-400 active:bg-slate-500 rounded-full transition-all' onClick={() => { copyToClipboard(item.username) }}><FaRegCopy /></div>
+                                        <td className='py-2 md:text-base text-sm'><div className='flex flex-wrap gap-2 items-center justify-center'>{item.username}</div>
+                                            <div className='cursor-pointer hover:bg-slate-400 active:bg-slate-500 rounded-full transition-all' onClick={() => { copyToClipboard(item.username) }}><FaRegCopy /></div>
                                         </td>
-                                        <td className='py-2 relative md:text-base text-sm'><div className='flex flex-wrap w-full items-center justify-center'>{item.password}</div>
-                                            <div className='cursor-pointer absolute md:right-2 right-0 top-1/2 transform -translate-y-1/2 hover:bg-slate-400 active:bg-slate-500 rounded-full transition-all' onClick={() => { copyToClipboard(item.password) }}><FaRegCopy /></div>
+                                        <td className='py-2 md:text-base text-sm'><div className='flex flex-wrap gap-2 items-center justify-center'>{item.password}</div>
+                                            <div className='cursor-pointer hover:bg-slate-400 active:bg-slate-500 rounded-full transition-all' onClick={() => { copyToClipboard(item.password) }}><FaRegCopy /></div>
                                         </td>
                                         <td className='flex items-center justify-center py-2 gap-2'>
                                             <div>
