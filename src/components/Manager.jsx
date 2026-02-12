@@ -8,10 +8,22 @@ const Manager = () => {
     const [form, setform] = useState({ site: "", username: "", password: "" });
     const [PasswordArray, setPasswordArray] = useState([]);
 
+    const getUserId = () => {
+        let userId = localStorage.getItem("userId");
+
+        if (!userId) {
+            userId = crypto.randomUUID();
+            localStorage.setItem("userId", userId);
+        }
+
+        return userId;
+    }
+
+
     const getPasswords = async () => {
-        let req = await fetch("https://passop-password-manager-d9n8.onrender.com")
+        const userId = getUserId()
+        let req = await fetch(`https://passop-password-manager-d9n8.onrender.com/${userId}`)
         let passwords = await req.json()
-        console.log(passwords)
         setPasswordArray(passwords)
     }
 
@@ -48,8 +60,10 @@ const Manager = () => {
             });
             return;
         }
+        const userId = getUserId()
         setPasswordArray([...PasswordArray, form]);
-        let res = await fetch("https://passop-password-manager-d9n8.onrender.com", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(form) })
+        const passwordData = { ...form, userId }
+        let res = await fetch("https://passop-password-manager-d9n8.onrender.com", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(passwordData) })
 
         // localStorage.setItem("passwords", JSON.stringify([...PasswordArray, form]));
         setform({ site: "", username: "", password: "" });
@@ -82,10 +96,11 @@ const Manager = () => {
         })
     }
 
-    const deleteAllPasswords = () => {
+    const deleteAllPasswords = async () => {
         if (window.confirm("Do you want to delete all the passwords?")) {
+            const userId = getUserId()
+            let res = await fetch(`https://passop-password-manager-d9n8.onrender.com/all/${userId}`, { method: "DELETE" })
             setPasswordArray([])
-            let res = fetch("https://passop-password-manager-d9n8.onrender.com/all", { method: "DELETE" })
             // localStorage.removeItem("passwords")
             toast.success("All passwords deleted!", {
                 autoClose: 2000,
@@ -205,5 +220,3 @@ const Manager = () => {
 }
 
 export default Manager
-
-
