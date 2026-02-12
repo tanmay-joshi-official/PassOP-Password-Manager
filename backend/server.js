@@ -22,10 +22,10 @@ async function startServer() {
     await client.connect()
 
     // Get all the passwords
-    app.get('/', async (req, res) => {
+    app.get('/:userId', async (req, res) => {
         const db = client.db(dbName)
         const collection = db.collection('passwords')
-        const findResult = await collection.find({}).toArray()
+        const findResult = await collection.find({userId: req.params.userId}).toArray()
         res.json(findResult)
     })
 
@@ -48,10 +48,10 @@ async function startServer() {
     })
 
     // Deletes all passwords
-    app.delete('/all', async (req, res) => {
+    app.delete('/all/:userId', async (req, res) => {
         const db = client.db(dbName)
         const collection = db.collection('passwords')
-        const findResult = await collection.deleteMany({})
+        const findResult = await collection.deleteMany({userId: req.params.userId})
         res.send({ success: true, result: findResult })
     })
 
