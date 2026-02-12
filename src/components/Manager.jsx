@@ -85,7 +85,7 @@ const Manager = () => {
     const deleteAllPasswords = () => {
         if (window.confirm("Do you want to delete all the passwords?")) {
             setPasswordArray([])
-            let res = fetch("https://passop-password-manager-d9n8.onrender.comall", { method: "DELETE", headers: { "Content-Type": "application/json" }, body: JSON.stringify(setPasswordArray) })
+            let res = fetch("https://passop-password-manager-d9n8.onrender.com/all", { method: "DELETE" })
             // localStorage.removeItem("passwords")
             toast.success("All passwords deleted!", {
                 autoClose: 2000,
@@ -205,4 +205,5 @@ const Manager = () => {
 }
 
 export default Manager
+
 
