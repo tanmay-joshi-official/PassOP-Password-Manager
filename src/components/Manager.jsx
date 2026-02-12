@@ -63,13 +63,13 @@ const Manager = () => {
         const userId = getUserId()
         setPasswordArray([...PasswordArray, form]);
         const passwordData = { ...form, userId }
-        let res = await fetch("https://passop-password-manager-d9n8.onrender.com", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(passwordData) })
-
-        // localStorage.setItem("passwords", JSON.stringify([...PasswordArray, form]));
         setform({ site: "", username: "", password: "" });
         toast.success("Password saved successfully!", {
             autoClose: 2000,
         })
+        let res = await fetch("https://passop-password-manager-d9n8.onrender.com", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(passwordData) })
+
+        // localStorage.setItem("passwords", JSON.stringify([...PasswordArray, form]));
     }
 
     const copyToClipboard = (text) => {
