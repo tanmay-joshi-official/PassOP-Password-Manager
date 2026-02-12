@@ -7,9 +7,10 @@ const Navbar = () => {
             <div className="logo text-xl font-bold mx-3 cursor-pointer">
                 <span className='text-green-400'>&lt;</span>Pass<span className='text-green-400'>OP/&gt;</span>
             </div>
-            <a href="http://github.com/tanmay-joshi-official" target='_blank'><button className='flex items-center gap-2 text-md border rounded-full p-1 hover:bg-green-800 active:bg-green-900 bg-green-700 transition-all mx-3 font-medium px-2 py-1 hover:scale-[1.03]'><FaGithub className='text-2xl' />GitHub</button></a>
+            <a href="https://github.com/tanmay-joshi-official/PassOP-Password-Manager" target='_blank'><button className='flex items-center gap-2 text-md border rounded-full p-1 hover:bg-green-800 active:bg-green-900 bg-green-700 transition-all mx-3 font-medium px-2 py-1 hover:scale-[1.03]'><FaGithub className='text-2xl' />GitHub</button></a>
         </nav>
     )
 }
+
 
 export default Navbar
