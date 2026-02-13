@@ -7,6 +7,7 @@ const Manager = () => {
 
     const [form, setform] = useState({ site: "", username: "", password: "" });
     const [PasswordArray, setPasswordArray] = useState([]);
+    const [toggle, setToggle] = useState(null);
 
     const getUserId = () => {
         let userId = localStorage.getItem("userId");
@@ -45,6 +46,10 @@ const Manager = () => {
         e.target.classList.add('hidden');
         e.target.previousElementSibling.classList.remove('hidden');
         e.target.previousElementSibling.previousElementSibling.type = 'password';
+    }
+
+    const togglePassword = (index) => {
+        setToggle(index === toggle ? null : index);
     }
 
     const handleChange = (e) => {
@@ -143,10 +148,10 @@ const Manager = () => {
                     <div className="relative">
                         <input value={form.password} onChange={handleChange} name="password" placeholder='Enter Password' className='rounded-full md:w-[17vw] w-[60vw] p-1 px-5 border-green-700 border pr-10 relative' type="password" />
                         <span className="material-symbols-outlined absolute right-3 top-[7px] cursor-pointer fill-black" onClick={hidePassword}>
-                            visibility_off
+                            visibility
                         </span>
                         <span className="material-symbols-outlined absolute right-3 top-[7px] cursor-pointer fill-black hidden" onClick={showPassword}>
-                            visibility
+                            visibility_off
                         </span>
                     </div>
                 </div>
@@ -177,15 +182,20 @@ const Manager = () => {
                             {PasswordArray.map((item, index) => {
                                 return (
                                     <tr key={index}>
-                                        <td className='py-2 relative md:text-base text-sm'>{<a href={item.site} target='_blank'><div className='w-full break-all whitespace-normal text-center px-2 pr-8'>{item.site}</div>
+                                        <td className='py-2 relative md:text-base text-sm'>{<a href={item.site} target='_blank'><div className='w-full break-all whitespace-normal text-center px-2 pr-8 tracking-wider'>{item.site}</div>
                                         </a>}
                                             <div className='cursor-pointer absolute md:right-2 right-1 top-1/2 transform -translate-y-1/2 hover:bg-slate-400 active:bg-slate-500 rounded-full transition-all' onClick={() => { copyToClipboard(item.site) }}><FaRegCopy /></div>
                                         </td>
-                                        <td className='py-2 relative md:text-base text-sm'><div className='w-full break-all whitespace-normal text-center px-2 pr-8'>{item.username}</div>
+                                        <td className='py-2 relative md:text-base text-sm'><div className='w-full break-all whitespace-normal text-center px-2 pr-8 tracking-wider'>{item.username}</div>
                                             <div className='cursor-pointer absolute md:right-2 right-1 top-1/2 transform -translate-y-1/2 hover:bg-slate-400 active:bg-slate-500 rounded-full transition-all' onClick={() => { copyToClipboard(item.username) }}><FaRegCopy /></div>
                                         </td>
-                                        <td className='py-2 relative md:text-base text-sm'><div className='w-full break-all whitespace-normal text-center px-2 pr-8'>{item.password}</div>
-                                            <div className='cursor-pointer absolute md:right-2 right-1 top-1/2 transform -translate-y-1/2 hover:bg-slate-400 active:bg-slate-500 rounded-full transition-all' onClick={() => { copyToClipboard(item.password) }}><FaRegCopy /></div>
+                                        <td className='py-2 relative md:text-base text-sm'><div className='w-full break-all whitespace-normal text-center px-2 pr-8 tracking-widest'>{toggle === index ? item.password : "*".repeat(item.password.length)}</div>
+                                            <div className='cursor-pointer absolute md:right-4 right-4 top-1/2 transform -translate-y-1/2 hover:bg-slate-400 active:bg-slate-500 rounded-full transition-all' onClick={() => { copyToClipboard(item.password) }}><FaRegCopy /></div>
+                                            <div>
+                                                <span className="material-symbols-outlined absolute -right-5 text-xl top-1/2 transform -translate-y-1/2 cursor-pointer fill-black mr-3" onClick={() => togglePassword(index)}>
+                                                    {toggle === index ? "visibility_off" : "visibility"}
+                                                </span>
+                                            </div>
                                         </td>
                                         <td className='flex items-center justify-center my-auto py-2 gap-2'>
                                             <div>
