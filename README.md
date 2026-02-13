@@ -6,10 +6,14 @@ This project was built to gain hands-on experience with real-world full stack de
 
 ---
 
-## 🌐 Live Demo
+## 🌐 Live Preview
 
-👉 **Live Website:** https://passop-password-manager-one.vercel.app/  
-👉 **Demo Recording:** 
+👉 **Live Website:** https://passop-password-manager-one.vercel.app/
+
+---
+
+## 📽 Demo video
+https://github.com/user-attachments/assets/3d906a81-71c8-47fb-aeb7-284dc98918ed
 
 ---
 
