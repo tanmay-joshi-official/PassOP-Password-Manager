@@ -164,7 +164,7 @@ const Manager = () => {
                     {PasswordArray.length !== 0 && <div className='text-red-700 hover:text-red-900 active:text-red-950 cursor-pointer md:my-3 my-2 absolute right-2' onClick={deleteAllPasswords}>Delete all passwords</div>}
                 </div>
                 {PasswordArray.length === 0 ? <div className='text-gray-500'>No passwords saved yet.</div> :
-                    <table className='table-auto w-full text-center rounded-lg overflow-hidden shadow-lg'>
+                    <table className='table-fixed w-full text-center rounded-lg overflow-hidden shadow-lg'>
                         <thead className='bg-green-700 text-white'>
                             <tr>
                                 <th className='py-1 md:font-medium font-normal md:text-lg text-sm'>Website</th>
@@ -177,17 +177,17 @@ const Manager = () => {
                             {PasswordArray.map((item, index) => {
                                 return (
                                     <tr key={index}>
-                                        <td className='py-2 relative md:text-base text-sm'>{<a href={item.site} target='_blank'><div className='flex flex-wrap w-full items-center justify-center'>{item.site}</div>
+                                        <td className='py-2 relative md:text-base text-sm'>{<a href={item.site} target='_blank'><div className='w-full break-all whitespace-normal text-center px-2 pr-8'>{item.site}</div>
                                         </a>}
-                                            <div className='cursor-pointer absolute md:right-2 right-0 top-1/2 transform -translate-y-1/2 hover:bg-slate-400 active:bg-slate-500 rounded-full transition-all' onClick={() => { copyToClipboard(item.site) }}><FaRegCopy /></div>
+                                            <div className='cursor-pointer absolute md:right-2 right-1 top-1/2 transform -translate-y-1/2 hover:bg-slate-400 active:bg-slate-500 rounded-full transition-all' onClick={() => { copyToClipboard(item.site) }}><FaRegCopy /></div>
                                         </td>
-                                        <td className='py-2 relative md:text-base text-sm'><div className='flex flex-wrap w-full items-center justify-center'>{item.username}</div>
-                                            <div className='cursor-pointer absolute md:right-2 right-0 top-1/2 transform -translate-y-1/2 hover:bg-slate-400 active:bg-slate-500 rounded-full transition-all' onClick={() => { copyToClipboard(item.username) }}><FaRegCopy /></div>
+                                        <td className='py-2 relative md:text-base text-sm'><div className='w-full break-all whitespace-normal text-center px-2 pr-8'>{item.username}</div>
+                                            <div className='cursor-pointer absolute md:right-2 right-1 top-1/2 transform -translate-y-1/2 hover:bg-slate-400 active:bg-slate-500 rounded-full transition-all' onClick={() => { copyToClipboard(item.username) }}><FaRegCopy /></div>
                                         </td>
-                                        <td className='py-2 relative md:text-base text-sm'><div className='flex flex-wrap w-full items-center justify-center'>{item.password}</div>
-                                            <div className='cursor-pointer absolute md:right-2 right-0 top-1/2 transform -translate-y-1/2 hover:bg-slate-400 active:bg-slate-500 rounded-full transition-all' onClick={() => { copyToClipboard(item.password) }}><FaRegCopy /></div>
+                                        <td className='py-2 relative md:text-base text-sm'><div className='w-full break-all whitespace-normal text-center px-2 pr-8'>{item.password}</div>
+                                            <div className='cursor-pointer absolute md:right-2 right-1 top-1/2 transform -translate-y-1/2 hover:bg-slate-400 active:bg-slate-500 rounded-full transition-all' onClick={() => { copyToClipboard(item.password) }}><FaRegCopy /></div>
                                         </td>
-                                        <td className='flex items-center justify-center py-2 gap-2'>
+                                        <td className='flex items-center justify-center my-auto py-2 gap-2'>
                                             <div>
                                                 <button onClick={() => handleEdit(index)}><span className="material-symbols-outlined text-[20px] cursor-pointer hover:bg-slate-400 active:bg-slate-500 rounded-full transition-all p-1">
                                                     edit
