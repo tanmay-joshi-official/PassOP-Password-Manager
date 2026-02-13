@@ -189,7 +189,7 @@ const Manager = () => {
                                         <td className='py-2 relative md:text-base text-sm'><div className='w-full break-all whitespace-normal text-center px-2 pr-8 tracking-wider'>{item.username}</div>
                                             <div className='cursor-pointer absolute md:right-2 right-1 top-1/2 transform -translate-y-1/2 hover:bg-slate-400 active:bg-slate-500 rounded-full transition-all' onClick={() => { copyToClipboard(item.username) }}><FaRegCopy /></div>
                                         </td>
-                                        <td className='py-2 relative md:text-base text-sm'><div className='w-full break-all whitespace-normal text-center px-2 pr-8 tracking-widest'>{toggle === index ? item.password : "*".repeat(item.password.length)}</div>
+                                        <td className='py-2 relative md:text-base text-sm'><div className='w-full break-all whitespace-normal text-center px-2 pr-8 tracking-wider'>{toggle === index ? item.password : "*".repeat(item.password.length)}</div>
                                             <div className='cursor-pointer absolute md:right-4 right-4 top-1/2 transform -translate-y-1/2 hover:bg-slate-400 active:bg-slate-500 rounded-full transition-all' onClick={() => { copyToClipboard(item.password) }}><FaRegCopy /></div>
                                             <div>
                                                 <span className="material-symbols-outlined absolute -right-5 text-xl top-1/2 transform -translate-y-1/2 cursor-pointer fill-black mr-3" onClick={() => togglePassword(index)}>
